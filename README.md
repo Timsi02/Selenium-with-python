@@ -28,7 +28,11 @@ What you will learn:
 
 # Coverage of tests:
 Simple script in selenium webdriver using pytest framework
+
 Conftest plugin
+
 Report creation
+
 Page object model
+
 Automation project demo
