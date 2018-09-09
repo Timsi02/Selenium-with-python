@@ -27,12 +27,12 @@ What you will learn:
 
 
 # Coverage of tests:
-Simple script in selenium webdriver using pytest framework
+[Simple script in selenium webdriver using pytest framework](https://github.com/Timsi02/Selenium-with-python/blob/master/Simple%20pytest%20script/README.md)
 
-Conftest plugin
+[Conftest plugin](https://github.com/Timsi02/Selenium-with-python/blob/master/Simple%20pytest%20script/README.md)
 
-Report creation
+[Report creation](https://github.com/Timsi02/Selenium-with-python/blob/master/Simple%20pytest%20script/README.md)
 
-Page object model
+[Page object model](https://github.com/Timsi02/Selenium-with-python/blob/master/Page%20Object%20Model/README.md)
 
 Automation project demo
