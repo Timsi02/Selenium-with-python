@@ -39,7 +39,7 @@ assert 'h' in x
 
 
 
-`Conftest.py`
+## Conftest.py
 
 This plugin contain directory-specific hooks and fixtures(Explained below). 
 Session and test running activities will invoke all hooks defined in conftest.py files closer to the root of the filesystem.
