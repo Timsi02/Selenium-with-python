@@ -2,7 +2,8 @@
 
 ## Introduction:
 
-This project aims to learn automation framework using Python with Selenium
+This project aims to learn automation framework using Python and Selenium
+
 Dependencies:
 -	Automation tool - Selenium webdriver
 -	IDE- Eclipse
@@ -10,12 +11,13 @@ Dependencies:
 -	Python framework – Pytest
 
 What you will learn:
-- Basic test case using Pytest
+- Automate test cases using Pytest
+- Hook and fixture functions implementaion in conftest plugin
 - Understanding of Page Object Model (POM)
 - Automation of website (https://www.via.com)
 
 # Setup
-[Download Python](https://www.python.org/downloads/)
+[Download Python](https://www.python.org/downloads/) - Download the version 3.3.1 or higher of Python. If you are using Windows you can use the native installer for Python
 
 [Download pytest](https://docs.pytest.org/en/latest/getting-started.html) - pytest is a python framework that makes building simple and scalable tests easy
 
@@ -23,7 +25,7 @@ What you will learn:
 
 [Downlaod Eclipse](https://www.eclipse.org/downloads/)- IDE used in this project
 
-[Configure pydev in eclipse](http;//www.vogella.com)
+[Configure pydev in eclipse](http://www.vogella.com/tutorials/Python/article.html#firstpython_program)
 
 
 # Coverage of tests:
@@ -35,4 +37,4 @@ What you will learn:
 
 [Page object model](https://github.com/Timsi02/Selenium-with-python/blob/master/Page%20Object%20Model/README.md)
 
-Automation project demo
+[Automation project demo](https://github.com/Timsi02/Selenium-with-python/tree/master/Automation%20project%20demo)
