@@ -1,12 +1,11 @@
-```python
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from yatraReservation.signInPage import test_signInClass
-from yatraReservation.flightReservationPage import test_flightReservationclass
-from yatraReservation.help import test_helpclass
-from yatraReservation.forex import test_forexclass
+from viaReservation.signInPage import test_signInClass
+from viaReservation.flightReservationPage import test_flightReservationclass
+from viaReservation.help import test_helpclass
+from viaReservation.forex import test_forexclass
 from selenium.webdriver.support.select import Select
-from yatraReservation.genericFunctions import generic
+from viaReservation.genericFunctions import generic
 class test_homePage:
     
     
@@ -17,11 +16,14 @@ class test_homePage:
         driver.find_element(*signInBtn_locator).click()
         
         try:
+            #Page object model implemented. Flow directed to signInprocess(driver, logger, TCName, sheet1, emailid, password) in the module viaReservation.signInPage
             test_signInClass.signInprocess(driver, logger, TCName, sheet1, emailid, password)
-            logger.info("signin details entered")
+            #Information logged in the log file
+            logger.info("sign in details entered")
         except Exception as ex:
+            #Error logged in the log file in case of failure
             logger.error("unable to enter sign in details :", ex)  
-            
+            raise ex
             
         
     @staticmethod
@@ -71,6 +73,8 @@ class test_homePage:
         except Exception as e: 
             logger.error("exception raised is: ", e)
             raise e   
-   ```         
+    
+        
+       
             
-            
+             
