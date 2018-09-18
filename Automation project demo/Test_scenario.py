@@ -46,9 +46,7 @@ def setup_module(module):
         'genericOb=generic(dest)'
     generic.getdestination(exePath)   
     
-    
-  
-def teardown_module(module): 
+   def teardown_module(module): 
     
     TS=generic.getCurrentTime()
     #Pytest creates report file in location: reportSrc by default. So, to move the report to a specific folder, follow the steps below
