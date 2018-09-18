@@ -1,11 +1,10 @@
-```python
 import pytest
 import xlrd
 import logbook
 from selenium import webdriver
-from yatraReservation.homePage import test_homePage
-from yatraReservation.test_gmail_home import gmailtestclass
-from yatraReservation.genericFunctions import generic
+from viaReservation.homePage import test_homePage
+from viaReservation.test_gmail_home import gmailtestclass
+from viaReservation.genericFunctions import generic
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,7 +14,7 @@ import time
 
 dest='test'
 def setup_module(module):
-    
+    #Fetch the current time from the method - getCurrentTime() form the module - viaReservation.genericFunctions
     TS=generic.getCurrentTime()
     #To make a folder with timestramp
     exePath=".\\Execution_status\\"+"Execution_"+TS+"\\"
@@ -23,12 +22,20 @@ def setup_module(module):
     y=os.mkdir(exePath)
     print ("directory created")
     
+    #There can be several testing environments 
     env="stage"
-    
+    'env="support"'
+    'env="prod"'
     if(env=="stage"):
         source=".\\Test_data\\viaData_stage.xlsx"
         dest=exePath+"viaData_stage_execution.xlsx"
-        copyfile(source, dest)    #viaData_stage_execution.xlsx file created which is a copy of iaData_stage.xlsx
+        copyfile(source, dest)    #viaData_stage_execution.xlsx file created which is a copy of viaData_stage.xlsx
+     
+    if(env=="support"):
+        source=".\\Test_data\\viaData_stage.xlsx"
+        dest=exePath+"viaData_support_execution.xlsx"
+        copyfile(source, dest)    #viaData_support_execution.xlsx file created which is a copy of viaData_support.xlsx   
+        
         'genericOb=generic(dest)'
     generic.getdestination(exePath) 
     
@@ -44,14 +51,14 @@ def setup_module(module):
 def teardown_module(module): 
     
     TS=generic.getCurrentTime()
-    #Pytest creates report file in location: reportSrc by default. 
-    reportSrc=".\\Report.html"
+    #Pytest creates report file in location: reportSrc by default. So, to move the report to a specific folder, follow the steps below
+    reportSrc=".\\Report.html" #default location
     
-    reportDest=".\\Report\\"+"HTMLReport_"+TS+".html"
-    copyfile(reportSrc,reportDest) #Report file copied from reportSrc to reportDest
+    reportDest=".\\Report\\"+"HTMLReport_"+TS+".html" #desired location
+    copyfile(reportSrc,reportDest) #Report file copied from reportSrc to reportDest(From default to desired)
     
 
-class Test_yatra(object):
+class Test_via(object):
     
     def setup_method(self, method):
         pass
@@ -59,9 +66,11 @@ class Test_yatra(object):
     def teardown_method(self, method):
         pass
     
-    
-    @pytest.mark.signIn_textBoxTest  #Marker to be used in conftest file to distinguish from other tests
-    #Marker defined to Skip the test conditionlly
+    #Marker to be used in conftest file to distinguish from other tests
+    @pytest.mark.signIn_textBoxTest  
+    #Marker defined to Skip the test conditionally
+    #Refer the method generic.checkExecutionFlag(sheet0, TCName):
+    #If the execution flag is set to 'No' in the excel corresponding to the test case "001_signIn_textBoxTest", this test will be skipped from the execution
     @pytest.mark.skipif(generic.checkExecutionFlag('via_driver', "001_signIn_textBoxTest")=='No', reason="functionality is not ready")
     def test_signIn(self,driverLaunch):
         sheet0="via_driver"
@@ -69,14 +78,19 @@ class Test_yatra(object):
         TCName='001_signIn_textBoxTest'
         
         try:
+            #Refer the method generic.logCreation(), used to create log files
             logger=generic.logCreation()
             driverLaunch.get("https://www.via.com")
+            #Page object model implementation. Flow directed to test_homePage.signIn_001(driver, logger, TCName, sheet1, emailid, password) in the module homePage.py
             test_homePage.signIn_001(driverLaunch, logger, TCName, sheet1, "emailid", "password")
+            #Logging the information
             logger.info('User signed in successfully')
+            #Refer the method generic.setValueToExcel(sheet0, TCName , columnName, cellValue): 
             generic.setValueToExcel(sheet0, TCName, "Execution_Result", "Pass")
         except Exception as e:
             
             logger.error("User unable to sign in with error: ", e)
+            #Refer the method generic.setValueToExcel(sheet0, TCName , columnName, cellValue): 
             generic.setValueToExcel(sheet0, TCName, "Execution_Result", "Fail")
             raise e 
     
@@ -185,5 +199,4 @@ class Test_yatra(object):
             logger.error("exception raised is: ", e)  
             generic.setValueToExcel(sheet0, TCName, "Execution_Result", "Fail")
             
-            raise e 
-```
+            raise e  
