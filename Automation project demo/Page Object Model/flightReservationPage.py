@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from yatraReservation.test_genericFunctions import generic
+from viaReservation.test_genericFunctions import generic
 
 class test_flightReservationclass:
     @staticmethod
@@ -53,4 +53,4 @@ class test_flightReservationclass:
             
         except Exception as e:
             logger.error("list of flights load is unsuccessful")   
-            raise e
+            raise e 
