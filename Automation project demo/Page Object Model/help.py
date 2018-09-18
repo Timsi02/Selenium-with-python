@@ -1,7 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from yatraReservation.test_genericFunctions import generic
+from viaReservation.test_genericFunctions import generic
 class test_helpclass:
     @staticmethod
     def help(driver, logger, TCName):
